@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
+
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(
@@ -54,3 +56,18 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = (
             '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
         )
+
+#Create Add Record Form
+class AddRecordForm(forms.ModelForm):
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "First Name", "class":"form-control"}), label="")
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Last Name", "class":"form-control"}), label="")
+    email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "email", "class":"form-control"}), label="")
+    phone =forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "phone", "class":"form-control"}), label="")
+    adress = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "adress", "class":"form-control"}), label="")
+    city = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "city", "class":"form-control"}), label="")
+    judet = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "judet", "class":"form-control"}), label="")
+    zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "zipcode", "class":"form-control"}), label="")
+
+    class Meta:
+        model = Record
+        exclude = ("user", )

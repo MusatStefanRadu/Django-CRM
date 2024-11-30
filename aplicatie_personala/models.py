@@ -7,7 +7,7 @@ class Record(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    emial = models.CharField(max_length=80) 
+    email = models.CharField(max_length=80) 
     adress = models.CharField(max_length=50)
     phone = models.CharField(max_length=12)
     city = models.CharField(max_length=80)
